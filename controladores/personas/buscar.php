@@ -21,7 +21,7 @@ include_once '../templates/navbar.php';
         $ranchos = $objRancho->buscar();
         $resultado = [
             'mensaje' => 'Datos encontrados',
-            'datos' => $Ranchos,
+            'datos' => $ranchos,
             'codigo' => 1
         ];
         // var_dump($clientes);
@@ -57,7 +57,7 @@ include_once '../templates/navbar.php';
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>NNOMBRE</th>
+                        <th>NOMBRE</th>
                         <th>MENU QUE LE SIRVIO</th>
                         <th>FECHA Y HORA</th>
                         <th>TIEMPO DE COMIDA</th>
@@ -65,15 +65,15 @@ include_once '../templates/navbar.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if($resultado['codigo'] == 1 && count($personas) > 0) : ?>
-                        <?php foreach ($personas as $key => $persona) : ?>
+                    <?php if($resultado['codigo'] == 1 && count($ranchos) > 0) : ?>
+                        <?php foreach ($ranchos as $key => $rancho) : ?>
                             <tr>
                                 <td><?= $key + 1?></td>
-                                <td><?= $persona['ran_nombre'] ?></td>
-                                <td><?= $persona['ran_menu'] ?></td>
-                                <td><?= $persona['ran_fechayhora'] ?></td>
-                                <td><?= $persona['ran_tiempo'] ?></td>
-                                <td><?= $persona['ran_nombresirvio'] ?></td>
+                                <td><?= $rancho['ran_nombre'] ?></td>
+                                <td><?= $rancho['ran_menu'] ?></td>
+                                <td><?= $rancho['ran_fechayhora'] ?></td>
+                                <td><?= $rancho['ran_tiempo'] ?></td>
+                                <td><?= $rancho['ran_nombresirvio'] ?></td>
                                 <td class="text-center">
                                 <div class="dropdown">
                                     <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
