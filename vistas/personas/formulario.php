@@ -26,7 +26,7 @@ include_once '../templates/header.php'?>
         <div class="row mb-3">
             <div class="col">
                 <label for="ran_tiempo">TIEMPO DE COMIDA QUE SE SIRVIO</label>
-                <select class="form-control" name="ran_fechayhora" id="ran_fechayhora" required>
+                <select class="form-control" name="ran_tiempo" id="ran_tiempo" required>
                     <option value="" disabled selected>Seleccione el tiempo de comida</option>
                     <option value="desayuno">DESAYUNO</option>
                     <option value="almuerzo">ALMUERZO</option>
