@@ -1,7 +1,7 @@
 <?php
 require "./modelos/conexion.php";
 
-class Cliente extends Conexion{
+class Persona extends Conexion{
     public $ran_id;
     public $ran_nombre;
     public $ran_menu;
@@ -24,7 +24,7 @@ class Cliente extends Conexion{
       // METODO PARA INSERTAR
       public function guardar(){
         $sql = "INSERT into rancho (ran_nombre, ran_menu, ran_fechayhora,
-         ran_tiempo, cli_nombresirvio) values ('$this->ran_nombre',
+         ran_tiempo, ran_nombresirvio) values ('$this->ran_nombre',
          '$this->ran_menu', '$this->ran_fechayhora', '$this->ran_tiempo', '$this->ran_nombresirvio')";
         $resultado = $this->ejecutar($sql);
         return $resultado; 
