@@ -4,6 +4,10 @@
     // error_reporting(E_ALL);
     require '../../modelos/persona.php';
 
+
+
+include_once '../templates/navbar.php';
+
     // consulta
     try {
         // var_dump($_GET);
@@ -13,11 +17,11 @@
         $_GET['ran_tiempo'] = filter_var( $_GET['ran_tiempo']) ;
         $_GET['ran_nombresirvio'] = htmlspecialchars( $_GET['ran_nombresirvio']);
 
-        $objPersona = new Persona($_GET);
-        $personas = $objPersona->buscar();
+        $objRancho = new Rancho($_GET);
+        $ranchos = $objRancho->buscar();
         $resultado = [
             'mensaje' => 'Datos encontrados',
-            'datos' => $personas,
+            'datos' => $Ranchos,
             'codigo' => 1
         ];
         // var_dump($clientes);
@@ -43,7 +47,7 @@
     </div>
     <div class="row mb-4 justify-content-center">
         <div class="col-lg-6">
-            <a href="../../vistas/personas/formulario.php" class="btn btn-primary w-100">VOLVER AL FORMULARIO DE CONTROL DE RANCHO</a>
+            <a href="../../vistas/personas/index.php" class="btn btn-primary w-100">VOLVER AL FORMULARIO DE CONTROL DE RANCHO</a>
         </div>
     </div>
     <h1 class="text-center">LISTADO DE PERSONAS QUE PASAN A RANCHO</h1>

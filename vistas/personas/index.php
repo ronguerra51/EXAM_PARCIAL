@@ -1,10 +1,15 @@
 <?php
 
+
 include_once '../templates/header.php'?>
+
+<?php
+
+include_once '../templates/navbar.php'?>
 
 <h1 class="text-center">CONTROL DE RANCHO</h1>
 <div class="row justify-content-center">
-    <form action="../../controladores/personas/guardar.php" method="POST" class="border bg-light shadow rounded p-4 col-lg-6">
+    <form action="/controladores/personas/guardar.php" method="POST" class="border bg-light shadow rounded p-4 col-lg-6">
         <div class="row mb-3">
             <div class="col">
                 <label for="ran_nombre">NOMBRE DE LA PERSONA QUE SE LE SIRVIO COMIDA</label>
@@ -20,7 +25,7 @@ include_once '../templates/header.php'?>
         <div class="row mb-3">
             <div class="col">
                 <label for="ran_fechayhora">FECHA Y HORA EN QUE SE SIRVIO</label>
-                <input type="datetime" name="ran_fechayhora" id="ran_fechayhora" class="form-control" required>
+                <input type="datetime-local" name="ran_fechayhora" id="ran_fechayhora" class="form-control" required>
             </div>
         </div>
         <div class="row mb-3">

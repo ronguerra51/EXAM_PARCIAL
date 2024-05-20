@@ -1,7 +1,7 @@
 <?php
-require "./modelos/conexion.php";
+require "conexion.php";
 
-class Persona extends Conexion{
+class Rancho extends Conexion{
     public $ran_id;
     public $ran_nombre;
     public $ran_menu;
@@ -16,14 +16,14 @@ class Persona extends Conexion{
         $this->ran_nombre = $args['ran_nombre'] ?? '';
         $this->ran_menu = $args['ran_menu'] ?? '';
         $this->ran_fechayhora= $args['ran_fechayhora'] ?? 0;
-        $this->ran_tiempo = $args['ran_tiempo'] ?? 0;
+        $this->ran_tiempo = $args['ran_tiempo'] ?? '';
         $this->ran_nombresirvio = $args['ran_nombresirvio'] ?? '';
 
     }
 
       // METODO PARA INSERTAR
       public function guardar(){
-        $sql = "INSERT into rancho (ran_nombre, ran_menu, ran_fechayhora,
+        $sql = "INSERT into Rancho (ran_nombre, ran_menu, ran_fechayhora,
          ran_tiempo, ran_nombresirvio) values ('$this->ran_nombre',
          '$this->ran_menu', '$this->ran_fechayhora', '$this->ran_tiempo', '$this->ran_nombresirvio')";
         $resultado = $this->ejecutar($sql);
@@ -33,7 +33,7 @@ class Persona extends Conexion{
 
     public function buscar(...$columnas){
         $cols = count($columnas) > 0 ? implode(',', $columnas) : '*';
-        $sql = "SELECT $cols FROM rancho where ran_situacion = 1 ";
+        $sql = "SELECT $cols FROM Rancho where ran_situacion = 1 ";
 
         if($this->ran_nombre != ''){
             $sql .= " AND ran_nombre like '%$this->ran_nombre%' ";

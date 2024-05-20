@@ -1,20 +1,14 @@
 <?php
-
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
-
-abstract class Conexion{
+class Conexion {
     protected static $conexion = null;
 
-    protected static function connectar() : PDO{
+    protected static function conectar() : PDO {
         try {
-            
-            self::$conexion = new PDO("informix:host=host.docker.internal; service=9088;database=controlderancho; server=informix; protocol=onsoctcp;EnableScrollableCursors=1", "informix", "in4mix");
+            self::$conexion = new PDO("informix:host=host.docker.internal; service=9088;database=tienda; server=informix; protocol=onsoctcp;EnableScrollableCursors=1", "informix", "in4mix");
             self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "conexion exitosa";
+            echo "Conexión exitosa";
         } catch (PDOException $e) {
-            echo "No hay conexion a la BD";
+            echo "No se pudo conectar a la base de datos";
             echo "<br>";
             echo $e->getMessage();
             self::$conexion = null;
@@ -22,13 +16,10 @@ abstract class Conexion{
         }
 
         return self::$conexion;
-
     }
 
-    // METODO PARA EJECUTAR SENTENCIAS SQL
-
-    public function ejecutar($sql){
-        $conexion = self::connectar();
+    public function ejecutar($sql) {
+        $conexion = self::conectar();
         $sentencia = $conexion->prepare($sql);
         $resultado = $sentencia->execute();
         $idInsertado = $conexion->lastInsertId();
@@ -38,12 +29,10 @@ abstract class Conexion{
             "resultado" => $resultado,
             "id" => $idInsertado
         ];
-        
     }
 
-    // METODO PARA CONSULTAR INFORMACION
-    public function servir($sql){
-        $conexion = self::connectar();
+    public function servir($sql) {
+        $conexion = self::conectar();
         $sentencia = $conexion->prepare($sql);
         $sentencia->execute();
         $data = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -54,6 +43,5 @@ abstract class Conexion{
         self::$conexion = null;
 
         return $datos;
-        
     }
 }
